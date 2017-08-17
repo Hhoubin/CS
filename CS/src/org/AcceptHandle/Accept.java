@@ -3,6 +3,7 @@ package org.AcceptHandle;
 import org.Operation.*;
 
 public class Accept {
+
     private String[] Requst;
     private String result;
     public Accept(String[] a) {
@@ -30,10 +31,18 @@ public class Accept {
                 Userinfo userinfo=new Userinfo();
                 result=userinfo.setUserinfo(Requst[1]);//1用户id  UserID
                 return result;
+            } else if (Requst[0].equals("Clothes")){
+                Clothes c=new Clothes();
+                result=c.change(Requst[1],Requst[2]);//1UserID ,2 Clothes(颜色)                }
+                return result;
+            } else if (Requst[0].equals("Clothes")) {
+                Clothes c = new Clothes();
+                result = c.change(Requst[1], Requst[2]);//1UserID ,2 Clothes(颜色)                }
+                return result;
+            }else if (Requst[0].equals("Setup")){
+
             }
-            else {
             return "aa";
-            }
 
     }
 }

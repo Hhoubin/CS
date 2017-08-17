@@ -19,8 +19,6 @@ public class HttpClientIntHandler extends ChannelInboundHandlerAdapter {
         byte[] result1 = new byte[result.readableBytes()];
         result.readBytes(result1);
         result.release();
-//        ctx.close();
-        System.out.println(ctx);
         System.out.println("Server said:" + new String(result1));
     }
     @Override
@@ -28,7 +26,7 @@ public class HttpClientIntHandler extends ChannelInboundHandlerAdapter {
     public void channelActive(ChannelHandlerContext ctx) throws Exception {
 //        logger.info("HelloClientIntHandler.channelActive");
         System.out.println("IA");
-        String msg = "Userinfo|aa";
+        String msg = "Userinfo|bb";
         ByteBuf encoded = ctx.alloc().buffer(4 * msg.length());
         encoded.writeBytes(msg.getBytes());
         ctx.write(encoded);
