@@ -5,12 +5,9 @@ import io.netty.channel.ChannelFuture;
 import io.netty.channel.ChannelInitializer;
 import io.netty.channel.ChannelOption;
 import io.netty.channel.EventLoopGroup;
-import io.netty.channel.group.ChannelGroup;
-import io.netty.channel.group.DefaultChannelGroup;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
-import io.netty.util.concurrent.ImmediateEventExecutor;
 import org.Handler.HttpInboundHandler;
 
 public class Server {
@@ -31,10 +28,10 @@ public class Server {
                     .childOption(ChannelOption.SO_KEEPALIVE, true);
 
             ChannelFuture f = b.bind(port).sync();
-            ChannelGroup group = new DefaultChannelGroup(ImmediateEventExecutor.INSTANCE);
-            System.out.println("+++++++++++++++++++++++++++++++++");
-            System.out.println(group);
-            System.out.println("+++++++++++++++++++++++++++++++++");
+//            ChannelGroup group = new DefaultChannelGroup(ImmediateEventExecutor.INSTANCE);
+//            System.out.println("+++++++++++++++++++++++++++++++++");
+//            System.out.println(group);
+//            System.out.println("+++++++++++++++++++++++++++++++++");
             f.channel().closeFuture().sync();
         } finally {
             workerGroup.shutdownGracefully();

@@ -15,8 +15,8 @@ public class UserName {
         String[] a=Pwd_UserID.split("\\|");
         String Userid=a[0];
         String PlayerID=Userid+"|#";
-        String Clothes="blue";
-        String ver=setRegister.UserID(Userid,PhoneID,Clothes,PlayerID);
+        String Clothes="blue";//衣服标识默认时蓝色
+        String ver=setRegister.UserID(Userid,PhoneID,PlayerID,Clothes);
         return ver;
     }
 }

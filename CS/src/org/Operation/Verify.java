@@ -4,7 +4,7 @@ import org.Redis.a;
 import redis.clients.jedis.Jedis;
 
 public class Verify {
-    public static String setVerify(int len){
+    public  String setVerify(int len){
     String str="0123456789";
     String string1="";
     for(int i=1;i<=4;i++){

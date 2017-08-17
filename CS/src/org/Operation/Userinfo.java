@@ -7,10 +7,13 @@ import java.util.List;
 
 public class Userinfo {
     public String setUserinfo(String UserID){
+        System.out.println("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
         Jedis jedis= a.b();
-        List<String> Pwd_UserID =jedis.lrange(UserID, 0, -1);;//list-->k(String UserID) ,v(String UserName,String Clothes,String PlayerID)
-        String userinfo=Pwd_UserID.get(0)+"|"+Pwd_UserID.get(1)+"|"+Pwd_UserID.get(2);
+        List<String> userinfo =jedis.lrange(UserID, 0, -1);
+        //list-->k(String UserID) ,v(String UserName,String PlayerID,String Clothes)
+        String userinfo1=userinfo.get(0)+"|"+userinfo.get(1)+"|"+userinfo.get(2);
+
         a.returnResource(jedis);
-        return userinfo;
+        return userinfo1;
     }
 }

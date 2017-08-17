@@ -25,11 +25,11 @@ public class SetRegister {
         a.returnResource(jedis);
         return "ok";
     }
-    public  String UserID(String UserID ,String UserName,String Clothes,String PlayerID){
+    public  String UserID(String UserID ,String UserName,String PlayerID,String Clothes){
         Jedis jedis=a.b();
         jedis.lpush(UserID, UserName);
-        jedis.lpush(UserID, Clothes);
         jedis.lpush(UserID, PlayerID);
+        jedis.lpush(UserID, Clothes);
         a.returnResource(jedis);
         return "ok";
     }
