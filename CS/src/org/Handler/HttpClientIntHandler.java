@@ -4,6 +4,8 @@ import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
 
+import java.util.Scanner;
+
 /**
  * Created by weicong on 17-8-4.
  */
@@ -26,7 +28,10 @@ public class HttpClientIntHandler extends ChannelInboundHandlerAdapter {
     public void channelActive(ChannelHandlerContext ctx) throws Exception {
 //        logger.info("HelloClientIntHandler.channelActive");
         System.out.println("IA");
-        String msg = "Userinfo|bb";
+        Scanner input = new Scanner(System.in);
+        String msg=input.next();
+//        String msg = "Setup";
+//        String msg = "Addroom|8253";
         ByteBuf encoded = ctx.alloc().buffer(4 * msg.length());
         encoded.writeBytes(msg.getBytes());
         ctx.write(encoded);
