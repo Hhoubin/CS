@@ -8,7 +8,24 @@ public class Userinfo {
     private String userID;//游戏id（包括）
     private String clothes;//衣服颜色
     private String playerID;//战备id（包括血量，子弹，衣服颜色，）
+    private String Record;//战绩
+    private String packet;//背包
 
+    public String getRecord() {
+        return Record;
+    }
+
+    public void setRecord(String record) {
+        Record = record;
+    }
+
+    public String getPacket() {
+        return packet;
+    }
+
+    public void setPacket(String packet) {
+        this.packet = packet;
+    }
 
     public Userinfo(){
 

@@ -1,19 +1,23 @@
 package org.Operation;
 
+import io.netty.channel.Channel;
+
 import java.util.HashMap;
-import java.util.Map;
 
 public class Map1 {
-    private static Map<Integer, Zoom> zoom_value = new HashMap<Integer, Zoom>();
-
+    private static HashMap<Integer, Zoom> zoom_value = new HashMap<Integer, Zoom>();
+    
     public static void hashmap(Integer roomid, Zoom zoom) {
         zoom_value.put(roomid, zoom);
     }
 
-//    public Channel[] join(Integer roomid, Channel ctx){
-//        Zoom roomname=zoom_value.get(roomid);
-////        roomname.Join(ctx);
-////        System.out.println(roomid);
-//        return new Channel[0];
-//    }
+    public static Zoom join(Integer roomid, String userid, Channel ctx){
+        Zoom zoom=zoom_value.get(roomid);
+        zoom.hashmap(userid,ctx);
+        return zoom;
+    }
+    public static Zoom join1(Integer roomid){
+        Zoom zoom=zoom_value.get(roomid);
+        return zoom;
+    }
 }

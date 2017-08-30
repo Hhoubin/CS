@@ -1,15 +1,16 @@
 package org.Operation;
 
 import io.netty.channel.Channel;
+import org.Struct.Room;
 
 import java.util.HashMap;
-import java.util.Map;
 
 public class Zoom {
-//    private static Map1<Integer,Map1>
-    private static Map<String, Room> zoom = new HashMap<String, Room>();
-    Integer roomid=ID();
-    public Integer ID() {
+    //    private static Map1<Integer,Map1>
+    public static HashMap<String, Channel> zoom = new HashMap<String, Channel>();
+    static Integer roomid = ID();
+
+    public static Integer ID() {
         String str = "0123456789";
         String string1 = "";
         for (int i = 1; i <= 4; i++) {
@@ -22,26 +23,29 @@ public class Zoom {
         return roomid;
     }
 
-    public static void hashmap(String userid, Room room) {
-//        Map1.hashmap(userid,zoom);
-        zoom.put(userid, room);
+    public static void hashmap(String userid, Channel ctx) {
+        zoom.put(userid, ctx);
+//        System.out.println(zoom.get(userid));
     }
 
-    public void join(String userid, Channel ctx){
-//        Room roomname=zoom.get(userid);
-//        roomname.Join(ctx);
-//        System.out.println(userid);
-//        return new Channel[0];
-        Room roomname=zoom.get(userid);
-        roomname.Join(ctx);
-        System.out.println(userid);
-    }
-    public Channel[] Creat(String userid,Zoom zoom,Channel ctx) {
+    public static Room join(String userid, Channel ctx) {
+        if (zoom.size() <= 10) {
+            Zoom.hashmap(userid,ctx);
+            Room room = new Room();
+            room.setCtx(zoom.get(userid));
+            room.setUserID(String.valueOf(zoom.keySet()));
 
-        Room room=new Room(userid);
-        Channel[] coomChannel=room.Creat(room,ctx);// id , room    数组，channel
-        Map1.hashmap(roomid,zoom);                 //房间号，小map
-        System.out.println(coomChannel);
-        return coomChannel;
+            return room;
+        }
+        return null;
+    }
+
+    public static String Creat(String userid, Zoom zoom1, Channel ctx) {
+        zoom1.hashmap(userid, ctx);
+        Map1.hashmap(roomid, zoom1);                 //房间号，小map
+//        Room room=new Room();
+        Map1.join(roomid,userid,ctx);
+//        String roomUesrID=room.getUserID();
+        return "yes";
     }
 }
